@@ -41,11 +41,11 @@ def show_state_at_bottom(screen, state_image):
     screen_height = screen.get_height()
     image_height = state_image.get_height()
     
-    y_position = screen_height - image_height
+    y_position = 0
     
     screen_width = screen.get_width()
     image_width = state_image.get_width()
-    x_position = (screen_width - image_width) // 2
+    x_position = (screen_width - image_width)
 
     screen.blit(state_image, (x_position, y_position))
     pygame.display.flip()  # Update the screen to display changes
@@ -77,7 +77,7 @@ class Player:
                     return decision
                 else:
                     screen.fill(BLACK)
-                    draw_text(f"{self.name}, ${self.potential_credits}, 'Y' for yes or 'N' for no?", 100, 50)
+                    draw_text(f"{self.name}, ${self.potential_credits}, 'Y' for yes or 'N' for no?", 10, 50)
                     show_state_at_bottom(screen, cropped_states["happy"])
                     pygame.display.flip()
 
@@ -115,9 +115,9 @@ def play_game():
 
         # After processing decisions, display the outcome
         
-        draw_text(f"Round {i}: You chose {decision1}, AI chose {decision2}", 100, 100)
-        draw_text(f"Your money: {player1.money}, Your credits: {player1.social_credits}", 100, 140)
-        draw_text(f"AI money: {player2.money}, AI credits: {player2.social_credits}", 100, 180)
+        draw_text(f"Round {i}: You chose {decision1}, AI chose {decision2}", 10, 100)
+        draw_text(f"Your money: {player1.money}, Your credits: {player1.social_credits}", 10, 140)
+        draw_text(f"AI money: {player2.money}, AI credits: {player2.social_credits}", 10, 180)
         
 
         pygame.display.flip()
@@ -132,10 +132,10 @@ def play_game():
 
     # Final standings display
     screen.fill(BLACK)
-    draw_text("Game Over!", 100, 100)
-    draw_text(f"Final You: Money - ${player1.money}, Credits - {player1.social_credits}", 100, 140)
-    draw_text(f"Final AI: Money - ${player2.money}, Credits - {player2.social_credits}", 100, 180)
-    draw_text("Press ESC to exit", 100, 220, color=(255,165,0))  # Orange color for the exit instruction
+    draw_text("Game Over!", 10, 100)
+    draw_text(f"Final You: Money - ${player1.money}, Credits - {player1.social_credits}", 10, 140)
+    draw_text(f"Final AI: Money - ${player2.money}, Credits - {player2.social_credits}", 10, 180)
+    draw_text("Press ESC to exit", 10, 220, color=(255,165,0))  # Orange color for the exit instruction
     pygame.display.flip()
 
     waiting_for_user = True
